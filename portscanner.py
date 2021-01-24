@@ -17,7 +17,7 @@ def scan(ip_list, port_limit):
 	print("Starting Scan...\n")
 
 	for target in ip_list:
-		ip = targt.strip()
+		ip = target.strip()
 		open_ports = 0
 		print(f"Showing results for {ip}")
 		print("---------------------------------\n")
