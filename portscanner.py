@@ -63,7 +63,7 @@ Base Usage:
 To specify Port limit to scan:
 	Usage: python {sys.argv[0]} [TARGET IP's] [PORT LIMIT]
 
-Otional Parameters:
+Optional Parameters:
 	--all:
 		Scans All ports from 1 - 65000
 		Usage: python {sys.argv[0]} [TARGET IP's] --all
