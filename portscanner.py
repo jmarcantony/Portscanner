@@ -7,6 +7,8 @@
 	DISCLAIMER: Such programmes like these are to be used on machines you have explicit permission to test.
 				I WILL NOT BE RESPONSIBLE FOR MISUSE OF THIS SOFTWARE!
 
+	Written in Python 3.9.1
+
 	- Joseph Marc Antony
 """
 
