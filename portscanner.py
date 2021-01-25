@@ -16,7 +16,7 @@ try:
 	import sys
 	import time
 	import socket
-	from colorama import Fore, init, Style
+	from colorama import Fore, init
 except ModuleNotFoundError:
 	print("[-] Requirements not satisfied.\nInstall requirements using command: pip install -r requirements.txt")
 	quit(-1)
