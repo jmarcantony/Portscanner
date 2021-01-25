@@ -19,8 +19,8 @@ try:
 except ModuleNotFoundError:
 	print("[-] Requirements not satisfied.\nInstall requirements using command: pip install -r requirements.txt")
 	quit(-1)
-	
-init()
+else:
+	init()
 
 
 def scan(ip_list, port_limit):
@@ -41,9 +41,9 @@ def scan(ip_list, port_limit):
 					pass
 				else:
 					try:
-						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.WHITE + "|      Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
+						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.WHITE + "    Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
 					except OSError:
-						print(Fore.BLUE + f"[+] " + Fore.WHITE + "Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.WHITE + "|      Service: " + Fore.RED + "unknown")
+						print(Fore.BLUE + f"[+] " + Fore.WHITE + "Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.WHITE + "      Service: " + Fore.RED + "unknown")
 	
 		if open_ports == 0:
 			print(Fore.RED + "[-] No ports were found open!")
@@ -96,6 +96,6 @@ Optional Parameters:
 		
 				""")
 	except IndexError:
-		print(Fore.RED + f"[-] USAGE: python {sys.argv[0]} [TARGET IP's] [OPTIONAL PARAMETERS]\n" + Fore.WHITE + "For Help, use:  python {sys.argv[0]} --help")
+		print(Fore.RED + f"[-] USAGE: python {sys.argv[0]} [TARGET IP's] [OPTIONAL PARAMETERS]\n" + Fore.WHITE + f"For Help, use:  python {sys.argv[0]} --help")
 else:
 	print(Fore.RED + f"[-] USAGE: python {sys.argv[0]} [TARGET IP's] [OPTIONAL PARAMETERS]\n" + Fore.WHITE + f"For Help, use:  python {sys.argv[0]} --help")
