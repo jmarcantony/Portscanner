@@ -4,7 +4,7 @@
 	vulnerable services running on open ports. I personally used this to scan my vulnerable Metaslpoitable 2 VM
 	to find vulnerable open ports.
 
-	DISCLAIMER: Such programmes like these are to be used on machines you have explicit permission to test.
+	DISCLAIMER: Programmes like these are to be used on machines you have explicit permission to test.
 				I WILL NOT BE RESPONSIBLE FOR MISUSE OF THIS SOFTWARE!
 
 	Written in Python 3.9.1
