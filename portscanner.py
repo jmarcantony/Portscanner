@@ -24,13 +24,24 @@ else:
 	init()
 
 
+def exec_time(function):
+    def wrapper(*args):
+        start = time.time()
+        function(*args)
+        end = time.time()
+        exec_time = round(end - start, 2)
+        print(Fore.YELLOW + f"[*] Scan completed in {exec_time} seconds\n")
+    return wrapper
+
+
+@exec_time
 def scan(ip_list, port_limit):
-	print(Fore.YELLOW + "\n[*] Starting Scan...\n")
+	print(Fore.YELLOW + "\n[*] Starting Scan...")
 
 	for target in ip_list:
 		ip = target.strip()
 		open_ports = 0
-		print(Fore.CYAN + f"Showing results for {ip}")
+		print(Fore.CYAN + f"\nShowing results for {ip}")
 		print("---------------------------------\n")
 		start = time.time()
 		for port in range(1, port_limit + 1):
@@ -50,7 +61,7 @@ def scan(ip_list, port_limit):
 			print(Fore.RED + "[-] No ports were found open!")
 		end = time.time()
 		exec_time = end - start
-		print(Fore.YELLOW + f"\n{open_ports} ports were found open in port range 1 - {port_limit}, Scan completed in {round(exec_time, 2)} seconds\n")
+		print(Fore.YELLOW + f"\n[*] {open_ports} ports were found open in port range 1 - {port_limit}")
 
 
 if len(sys.argv) >= 2:
