@@ -53,9 +53,9 @@ def scan(ip_list, port_limit):
 					pass
 				else:
 					try:
-						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.WHITE + "    Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
+						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
 					except OSError:
-						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.WHITE + "    Service: " + Fore.RED + "unknown")
+						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.RED + "unknown")
 		if open_ports == 0:
 			print(Fore.RED + "[-] No ports were found open!")
 		end = time.time()
