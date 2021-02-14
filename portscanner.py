@@ -73,7 +73,7 @@ if len(sys.argv) >= 2:
 				else:
 					port_limit = 65000
 			except IndexError:
-				port_limit = 100
+				port_limit = 1000
 			except ValueError:
 				print(Fore.RED + "[-] Use integers to specify port limit.\n")
 				print(Fore.WHITE + f"USAGE: python {sys.argv[0]} [TARGET IP's] [OPTIONAL PARAMETERS]")
