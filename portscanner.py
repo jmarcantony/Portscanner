@@ -43,7 +43,6 @@ def scan(ip_list, port_limit):
 		open_ports = 0
 		print(Fore.CYAN + f"\nShowing results for {ip}")
 		print("---------------------------------\n")
-		start = time.time()
 		for port in range(1, port_limit + 1):
 				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				try:
@@ -58,8 +57,7 @@ def scan(ip_list, port_limit):
 						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.RED + "unknown")
 		if open_ports == 0:
 			print(Fore.RED + "[-] No ports were found open!")
-		end = time.time()
-		exec_time = end - start
+						      
 		print(Fore.YELLOW + f"\n[*] {open_ports} ports were found open in port range 1 - {port_limit}")
 
 
