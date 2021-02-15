@@ -1,6 +1,6 @@
 """
 	This programme is a port scanner wich scans all ports on a machine. If the Port is open on that machine,
-	the programme would return the open port. Portscanner are used for Penetration Testing in order to exploit
+	the programme would return the open port. Portscanners are used for Penetration Testing in order to exploit
 	vulnerable services running on open ports. I personally used this to scan my vulnerable Metaslpoitable 2 VM
 	to find vulnerable open ports.
 
