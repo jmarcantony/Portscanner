@@ -25,9 +25,9 @@ else:
 
 
 def exec_time(function):
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         start = time.time()
-        function(*args)
+        function(*args, **kwargs)
         end = time.time()
         exec_time = round(end - start, 2)
         print(Fore.YELLOW + f"[*] Scan completed in {exec_time} seconds\n")
