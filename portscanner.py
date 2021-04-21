@@ -46,20 +46,23 @@ def scan(ip_list, port_limit):
 		print(Fore.CYAN + f"\nShowing results for {ip}")
 		print("---------------------------------\n")
 		for port in range(1, port_limit + 1):
-				sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			sock.settimeout(1)
+			try:
+				sock.connect((ip, port))
+				open_ports += 1
+			except ConnectionRefusedError:
+				pass
+			except socket.timeout:
+				pass
+			else:
 				try:
-					sock.connect((ip, port))
-					open_ports += 1
-				except ConnectionRefusedError:
-					pass
-				else:
-					try:
-						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
-					except OSError:
-						print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.RED + "unknown")
+					print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.GREEN + f"{socket.getservbyport(port, 'tcp')}")
+				except OSError:
+					print(Fore.BLUE + f"[+] Open Port: " + Fore.GREEN + f"{port}{' ' * (6 - len(str(port)))}" + Fore.CYAN + "|" + Fore.BLUE + "    Service: " + Fore.RED + "unknown")
 		if open_ports == 0:
 			print(Fore.RED + "[-] No ports were found open!")
-						      
+								
 		print(Fore.YELLOW + f"\n[*] {open_ports} ports were found open in port range 1 - {port_limit}")
 
 
