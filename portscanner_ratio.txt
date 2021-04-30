@@ -1,0 +1,22 @@
+NOTE: These tests were performed on a machine in the localhost
+
+no. of ports = x
+time taken to scan x ports = y
+
+ration x:y = 10000:1422 OR 5000:711
+
+formula to find approx time to scan x number of ports:
+
+                    For Linux Machine:
+                         y = (1422 * x) / 10000
+                                    OR
+                         y = (711 * x) / 5000
+
+                        Where y = time taken to scan
+                        Where x = no. of ports
+                    
+                    For Windows Machine:
+                        y = x
+                        
+                        Where y = time taken to scan
+                        Where x = no. of ports        
