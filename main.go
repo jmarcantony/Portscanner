@@ -41,7 +41,7 @@ func main() {
 		fmt.Printf("%s", reset)
 	}
 	flag.Parse()
-	wg.Add(*end)
+	wg.Add(*end - (*start - 1))
 	s := time.Now()
 	fmt.Println(yellow + "\n[*] Starting Scan..." + reset)
 	fmt.Printf("\n%sShowing results for %s\n", cyan, *host)
