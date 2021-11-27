@@ -24,7 +24,7 @@ const (
 
 var (
 	wg        sync.WaitGroup
-	mu        sync.RWMutex
+	mu        sync.Mutex
 	openPorts int
 	timeout   *int    = flag.Int("t", 1, "timeout in seconds")
 	start     *int    = flag.Int("s", 1, "starting port to scan from")
@@ -41,12 +41,12 @@ func main() {
 		fmt.Printf("%s", reset)
 	}
 	flag.Parse()
-	wg.Add(*end - (*start - 1))
 	s := time.Now()
 	fmt.Println(yellow + "\n[*] Starting Scan..." + reset)
 	fmt.Printf("\n%sShowing results for %s\n", cyan, *host)
 	fmt.Printf("---------------------------------%s\n\n", reset)
 	for i := 1; i <= *end; i++ {
+		wg.Add(1)
 		port := strconv.Itoa(i)
 		go scan(&port)
 	}
@@ -66,17 +66,12 @@ func scan(port *string) {
 	if err != nil {
 		return
 	}
+	defer conn.Close()
 	service := getService(port)
-	if service != "unknown" {
-		service = green + service + reset
-	} else {
-		service = red + service + reset
-	}
 	fmt.Printf("%s[+] Open Port: %s%s%s%s|%s   Service: %s\n", blue, green, *port, strings.Repeat(" ", 6-len(*port)), cyan, blue, service)
 	mu.Lock()
 	openPorts++
 	mu.Unlock()
-	conn.Close()
 }
 
 func getService(port *string) string {
@@ -85,5 +80,11 @@ func getService(port *string) string {
 	if err != nil {
 		return "unknown"
 	}
-	return strings.TrimSpace(string(out))
+	service := strings.TrimSpace(string(out))
+	if service != "unknown" {
+		service = green + service + reset
+	} else {
+		service = red + service + reset
+	}
+	return service
 }
